@@ -1,0 +1,41 @@
+---
+title: "wk1_day4_summry_stats"
+author: "Joshua Paul Cohen"
+format: html
+editor_options: 
+  chunk_output_type: console
+---
+
+
+```{r}
+# load libraries
+library(GGally)
+library(skimr)
+library(palmerpenguins)
+library(tidyverse)
+library(ggplot2)
+
+#check out the column names ----
+names(penguins)
+
+# look at the dimensions of the df ----
+dim(penguins)
+
+# summary stats of penguins
+summary(penguins)
+
+# get a summary using {skimr} package
+skimr::skim(penguins)
+
+# print first 6 rows
+head(penguins, n = 3)
+# print last 6 rows
+tail(penguins)
+
+# what happens when u ggpairs with no configuration
+GGally :: ggpairs(penguins, columns = 3:6, ggplot2::aes(color = species))
+
+# create histogram of penguin flipper lengths ----
+ggplot(data = penguins, aes(x = flipper_length_mm, fill = species)) + geom_histogram()
+```
+
